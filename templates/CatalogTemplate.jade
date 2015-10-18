@@ -1,6 +1,10 @@
 doctype xml
 document
   head
+    style
+      | .whiteText {
+      |   color: rgb(255, 255, 255);
+      | }
   catalogTemplate
     banner
       title Store Catalog
@@ -14,6 +18,6 @@ document
           relatedContent
             grid
               section
-                | `
-                gridSectionLockup(responseText, this)
-                | `
+                lockup
+                  img(src="#{baseUrl}resources/images/lolz/pug.png" width="308" height="308")
+                  title.whiteText FUCK YEAH PUG!
