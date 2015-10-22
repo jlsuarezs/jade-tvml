@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Jade to TVML/JS tester",
   "main": "server.js",
+  "keywords": [
+    "tvOS", "express", "jade", "html", "AppleTV"
+  ],
   "dependencies": {
     "express": "^4.13.3",
     "jade": "^1.11.0",
