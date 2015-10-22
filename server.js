@@ -17,7 +17,7 @@ app.set('views', __dirname + "/templates");
 app.get('/templates/:path', function (req, res) {
   jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
 
-  var baseUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var baseUrl = req.protocol + '://' + req.get('host');
   var template = jade.renderFile(templatePath(req.params.path), {
     doctype: 'xml',
     baseUrl: baseUrl,
