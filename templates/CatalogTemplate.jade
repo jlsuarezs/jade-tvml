@@ -19,5 +19,6 @@ document
             grid
               section
                 lockup
-                  img(src="#{baseUrl}resources/images/lolz/pug.png" width="308" height="308")
-                  title.whiteText FUCK YEAH PUG!
+                  each thing in things
+                    img(src="#{baseUrl}resources/images/lolz/pug.png" width="308" height="308")
+                    title.whiteText FUCK YEAH PUG!
