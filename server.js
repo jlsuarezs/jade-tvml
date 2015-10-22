@@ -1,11 +1,11 @@
 var express = require('express'),
-    logger = require('morgan'),
-    jade = require('jade');
+    logger  = require('morgan'),
+    jade    = require('jade');
 
 var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
-    templatePath = require('./lib/template-path'),
-    imageUrl = require('./lib/image-url'),
-    baseUrl = require('./lib/base-url');
+    templatePath        = require('./lib/template-path'),
+    imageUrl            = require('./lib/image-url'),
+    baseUrl             = require('./lib/base-url');
 
 var app = express();
 
@@ -31,7 +31,6 @@ app.get('/templates/:path', function (req, res) {
   });
 
   res.set('Content-Type', 'application/javascript');
-
   res.send(tvosTemplateWrapper(template));
 });
 
