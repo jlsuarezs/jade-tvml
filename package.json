@@ -23,7 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/2metres/jade-tvml.git"
   },
-  "author": "Andrew Carr",
+  "author": "Andrew Carr <andrw.carr@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/2metres/jade-tvml/issues"
