@@ -4,7 +4,6 @@ var express = require('express'),
 
 var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
     templatePath        = require('./lib/template-path'),
-    imageUrl            = require('./lib/image-url'),
     baseUrl             = require('./lib/base-url');
 
 var app = express();
@@ -20,7 +19,6 @@ app.get('/templates/:path', function (req, res) {
 
   var template = jade.renderFile(templatePath(req.params.path), {
     doctype: 'xml',
-    imageUrl: imageUrl,
     baseUrl: baseUrl(req),
     things: [
       'One Thing',
