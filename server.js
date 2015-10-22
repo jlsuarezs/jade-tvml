@@ -2,9 +2,10 @@ var express = require('express'),
     logger = require('morgan'),
     jade = require('jade');
 
-var baseURL = require('./lib/baseURL'),
-    templateFilePath = require('./lib/templateFilePath'),
-    tvJSTemplateWrapper = require('./lib/tvJSTemplateWrapper');
+var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
+    templatePath = require('./lib/template-path'),
+    imageUrl = require('./lib/image-url'),
+    baseUrl = require('./lib/base-url');
 
 var app = express();
 
@@ -15,9 +16,12 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + "/templates");
 
 app.get('/templates/:path', function (req, res) {
-  var template = jade.renderFile(templateFilePath(req.params.path), {
+  jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
+
+  var template = jade.renderFile(templatePath(req.params.path), {
     doctype: 'xml',
-    baseUrl: baseURL(req),
+    imageUrl: imageUrl,
+    baseUrl: baseUrl(req),
     things: [
       'One Thing',
       'Two Thing',
@@ -28,7 +32,7 @@ app.get('/templates/:path', function (req, res) {
 
   res.set('Content-Type', 'application/javascript');
 
-  res.send(tvJSTemplateWrapper(template));
+  res.send(tvosTemplateWrapper(template));
 });
 
 var server = app.listen(5000);
