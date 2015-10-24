@@ -16,7 +16,7 @@ npm install
 node server
 ```
 
-### Run the server using nodemon (auto-starts on changes)
+### Run the server using nodemon (automatically restarts on changes)
 ```
 gulp start
 ```
