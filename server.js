@@ -13,11 +13,9 @@ app.use(logger('dev'));
 app.set('view engine', 'jade');
 app.set('views', __dirname + "/templates");
 
+jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
 
 app.get('/templates/:path', function (req, res) {
-
-  jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
-
   var baseUrl = req.protocol + '://' + req.get('host');
   var template = jade.renderFile(templatePath(req.params.path), {
     doctype: 'xml',
@@ -35,9 +33,6 @@ app.get('/templates/:path', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-
-  jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
-
   var baseUrl = req.protocol + '://' + req.get('host');
   var template = jade.renderFile(templatePath("CatalogTemplate.xml.js"), {
     doctype: 'xml',
