@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		20C508721BDB9C93007F4A93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508711BDB9C93007F4A93 /* AppDelegate.swift */; };
-		20C508741BDB9C93007F4A93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508731BDB9C93007F4A93 /* ViewController.swift */; };
-		20C508771BDB9C93007F4A93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C508751BDB9C93007F4A93 /* Main.storyboard */; };
 		20C508791BDB9C93007F4A93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C508781BDB9C93007F4A93 /* Assets.xcassets */; };
 		20C508841BDB9C93007F4A93 /* tvml_jade_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508831BDB9C93007F4A93 /* tvml_jade_appTests.swift */; };
 /* End PBXBuildFile section */
@@ -27,8 +25,6 @@
 /* Begin PBXFileReference section */
 		20C5086E1BDB9C92007F4A93 /* tvml-jade-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvml-jade-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C508711BDB9C93007F4A93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20C508731BDB9C93007F4A93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		20C508761BDB9C93007F4A93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20C508781BDB9C93007F4A93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20C5087A1BDB9C93007F4A93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20C5087F1BDB9C93007F4A93 /* tvml-jade-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tvml-jade-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				20C508711BDB9C93007F4A93 /* AppDelegate.swift */,
-				20C508731BDB9C93007F4A93 /* ViewController.swift */,
-				20C508751BDB9C93007F4A93 /* Main.storyboard */,
 				20C508781BDB9C93007F4A93 /* Assets.xcassets */,
 				20C5087A1BDB9C93007F4A93 /* Info.plist */,
 			);
@@ -175,7 +169,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C508791BDB9C93007F4A93 /* Assets.xcassets in Resources */,
-				20C508771BDB9C93007F4A93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20C508741BDB9C93007F4A93 /* ViewController.swift in Sources */,
 				20C508721BDB9C93007F4A93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,17 +207,6 @@
 			targetProxy = 20C508801BDB9C93007F4A93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		20C508751BDB9C93007F4A93 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				20C508761BDB9C93007F4A93 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		20C508861BDB9C93007F4A93 /* Debug */ = {
@@ -376,6 +357,7 @@
 				20C5088A1BDB9C93007F4A93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20C5088B1BDB9C93007F4A93 /* Build configuration list for PBXNativeTarget "tvml-jade-appTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +366,7 @@
 				20C5088D1BDB9C93007F4A93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
