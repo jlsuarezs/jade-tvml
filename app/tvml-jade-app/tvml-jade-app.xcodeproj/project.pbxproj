@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20C508721BDB9C93007F4A93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508711BDB9C93007F4A93 /* AppDelegate.swift */; };
+		20C508741BDB9C93007F4A93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508731BDB9C93007F4A93 /* ViewController.swift */; };
+		20C508771BDB9C93007F4A93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C508751BDB9C93007F4A93 /* Main.storyboard */; };
+		20C508791BDB9C93007F4A93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C508781BDB9C93007F4A93 /* Assets.xcassets */; };
+		20C508841BDB9C93007F4A93 /* tvml_jade_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C508831BDB9C93007F4A93 /* tvml_jade_appTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20C508801BDB9C93007F4A93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20C508661BDB9C92007F4A93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20C5086D1BDB9C92007F4A93;
+			remoteInfo = "tvml-jade-app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20C5086E1BDB9C92007F4A93 /* tvml-jade-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvml-jade-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20C508711BDB9C93007F4A93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		20C508731BDB9C93007F4A93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20C508761BDB9C93007F4A93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		20C508781BDB9C93007F4A93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20C5087A1BDB9C93007F4A93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20C5087F1BDB9C93007F4A93 /* tvml-jade-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tvml-jade-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20C508831BDB9C93007F4A93 /* tvml_jade_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvml_jade_appTests.swift; sourceTree = "<group>"; };
+		20C508851BDB9C93007F4A93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20C5086B1BDB9C92007F4A93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20C5087C1BDB9C93007F4A93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20C508651BDB9C92007F4A93 = {
+			isa = PBXGroup;
+			children = (
+				20C508701BDB9C93007F4A93 /* tvml-jade-app */,
+				20C508821BDB9C93007F4A93 /* tvml-jade-appTests */,
+				20C5086F1BDB9C92007F4A93 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20C5086F1BDB9C92007F4A93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20C5086E1BDB9C92007F4A93 /* tvml-jade-app.app */,
+				20C5087F1BDB9C93007F4A93 /* tvml-jade-appTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20C508701BDB9C93007F4A93 /* tvml-jade-app */ = {
+			isa = PBXGroup;
+			children = (
+				20C508711BDB9C93007F4A93 /* AppDelegate.swift */,
+				20C508731BDB9C93007F4A93 /* ViewController.swift */,
+				20C508751BDB9C93007F4A93 /* Main.storyboard */,
+				20C508781BDB9C93007F4A93 /* Assets.xcassets */,
+				20C5087A1BDB9C93007F4A93 /* Info.plist */,
+			);
+			path = "tvml-jade-app";
+			sourceTree = "<group>";
+		};
+		20C508821BDB9C93007F4A93 /* tvml-jade-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				20C508831BDB9C93007F4A93 /* tvml_jade_appTests.swift */,
+				20C508851BDB9C93007F4A93 /* Info.plist */,
+			);
+			path = "tvml-jade-appTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20C5086D1BDB9C92007F4A93 /* tvml-jade-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20C508881BDB9C93007F4A93 /* Build configuration list for PBXNativeTarget "tvml-jade-app" */;
+			buildPhases = (
+				20C5086A1BDB9C92007F4A93 /* Sources */,
+				20C5086B1BDB9C92007F4A93 /* Frameworks */,
+				20C5086C1BDB9C92007F4A93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tvml-jade-app";
+			productName = "tvml-jade-app";
+			productReference = 20C5086E1BDB9C92007F4A93 /* tvml-jade-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20C5087E1BDB9C93007F4A93 /* tvml-jade-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20C5088B1BDB9C93007F4A93 /* Build configuration list for PBXNativeTarget "tvml-jade-appTests" */;
+			buildPhases = (
+				20C5087B1BDB9C93007F4A93 /* Sources */,
+				20C5087C1BDB9C93007F4A93 /* Frameworks */,
+				20C5087D1BDB9C93007F4A93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20C508811BDB9C93007F4A93 /* PBXTargetDependency */,
+			);
+			name = "tvml-jade-appTests";
+			productName = "tvml-jade-appTests";
+			productReference = 20C5087F1BDB9C93007F4A93 /* tvml-jade-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20C508661BDB9C92007F4A93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = TOMJCARRMARTIN;
+				TargetAttributes = {
+					20C5086D1BDB9C92007F4A93 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					20C5087E1BDB9C93007F4A93 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 20C5086D1BDB9C92007F4A93;
+					};
+				};
+			};
+			buildConfigurationList = 20C508691BDB9C92007F4A93 /* Build configuration list for PBXProject "tvml-jade-app" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20C508651BDB9C92007F4A93;
+			productRefGroup = 20C5086F1BDB9C92007F4A93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20C5086D1BDB9C92007F4A93 /* tvml-jade-app */,
+				20C5087E1BDB9C93007F4A93 /* tvml-jade-appTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20C5086C1BDB9C92007F4A93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20C508791BDB9C93007F4A93 /* Assets.xcassets in Resources */,
+				20C508771BDB9C93007F4A93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20C5087D1BDB9C93007F4A93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20C5086A1BDB9C92007F4A93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20C508741BDB9C93007F4A93 /* ViewController.swift in Sources */,
+				20C508721BDB9C93007F4A93 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20C5087B1BDB9C93007F4A93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20C508841BDB9C93007F4A93 /* tvml_jade_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20C508811BDB9C93007F4A93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20C5086D1BDB9C92007F4A93 /* tvml-jade-app */;
+			targetProxy = 20C508801BDB9C93007F4A93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20C508751BDB9C93007F4A93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20C508761BDB9C93007F4A93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20C508861BDB9C93007F4A93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		20C508871BDB9C93007F4A93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20C508891BDB9C93007F4A93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "tvml-jade-app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.tomjcarrmartin.tvml-jade-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		20C5088A1BDB9C93007F4A93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "tvml-jade-app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.tomjcarrmartin.tvml-jade-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		20C5088C1BDB9C93007F4A93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "tvml-jade-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.tomjcarrmartin.tvml-jade-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tvml-jade-app.app/tvml-jade-app";
+			};
+			name = Debug;
+		};
+		20C5088D1BDB9C93007F4A93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "tvml-jade-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.tomjcarrmartin.tvml-jade-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tvml-jade-app.app/tvml-jade-app";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20C508691BDB9C92007F4A93 /* Build configuration list for PBXProject "tvml-jade-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20C508861BDB9C93007F4A93 /* Debug */,
+				20C508871BDB9C93007F4A93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20C508881BDB9C93007F4A93 /* Build configuration list for PBXNativeTarget "tvml-jade-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20C508891BDB9C93007F4A93 /* Debug */,
+				20C5088A1BDB9C93007F4A93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		20C5088B1BDB9C93007F4A93 /* Build configuration list for PBXNativeTarget "tvml-jade-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20C5088C1BDB9C93007F4A93 /* Debug */,
+				20C5088D1BDB9C93007F4A93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20C508661BDB9C92007F4A93 /* Project object */;
+}
