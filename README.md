@@ -20,3 +20,7 @@ node server
 ```
 gulp start
 ```
+
+### Routing
+
+Any template from the templates directory is accessible via `localhost:3000/templates/{templateName}.xml.js`
