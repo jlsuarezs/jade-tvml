@@ -23,4 +23,8 @@ gulp start
 
 ### Routing
 
-Any template from the templates directory is accessible via `localhost:5000/templates/{templateName}.xml.js`
+Any template from the templates directory is accessible via 
+
+```
+localhost:5000/templates/{templateName}.xml.js
+```
