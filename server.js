@@ -15,6 +15,7 @@ app.set('views', __dirname + "/templates");
 
 
 app.get('/templates/:path', function (req, res) {
+	
   jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
 
   var baseUrl = req.protocol + '://' + req.get('host');
@@ -31,6 +32,8 @@ app.get('/templates/:path', function (req, res) {
 
   res.set('Content-Type', 'application/javascript');
   res.send(tvosTemplateWrapper(template));
+  
+
 });
 
 var server = app.listen(5000);
