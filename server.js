@@ -7,6 +7,19 @@ var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
 
 var app = express();
 
+var templateOptionsFor = function(path, baseUrl) {
+  return {
+    doctype: 'xml',
+    baseUrl: baseUrl,
+    things: [
+      {'title': 'One Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+      {'title': 'Two Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+      {'title': 'Red Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+      {'title': 'Blue Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+    ]
+  }
+}
+
 app.use(express.static('public'));
 app.use(logger('dev'));
 
@@ -17,16 +30,7 @@ jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "") 
 
 app.get('/templates/:path', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
-  var template = jade.renderFile(templatePath(req.params.path), {
-    doctype: 'xml',
-    baseUrl: baseUrl,
-    things: [
-      'One Thing',
-      'Two Thing',
-      'Red Thing',
-      'Blue Thing'
-    ]
-  });
+  var template = jade.renderFile(templatePath(req.params.path), templateOptionsFor(req.params.path, baseUrl));
 
   res.set('Content-Type', 'application/javascript');
   res.send(tvosTemplateWrapper(template));
