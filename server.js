@@ -29,7 +29,8 @@ var noDynamicContent = function(baseUrl) {
 
 var shopThings = function(_) {
   return new Promise(function(resolve, reject) {
-    var uri = 'http://soulland.com/products.json'
+    var uri = 'http://soulland.com/products.json';
+
     http.get(uri, function(res) {
       var body = '';
       res.on('data', function(chunk) {
@@ -53,7 +54,7 @@ var templateDynamicContentFor = function(path, baseUrl) {
   var templateDirectory = {
     'Index.xml.js': defaultThings,
     'CatalogTemplate.xml.js': shopThings
-  }
+  };
 
   return new Promise(function(resolve, reject) {
     (templateDirectory[path] || noDynamicContent).call(this, baseUrl)

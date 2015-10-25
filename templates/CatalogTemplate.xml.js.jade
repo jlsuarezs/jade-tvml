@@ -18,5 +18,5 @@ document
               section
                 each thing in dynamicContent.things
                   lockup
-                    img(src="#{thing.thumbnail}" width="308" height="308")
-                    title.whiteText #{thing.title}
+                    img(src= thing.thumbnail width="308" height="308")
+                    title.whiteText= thing.title
