@@ -34,7 +34,7 @@ app.get('/templates/:path', function (req, res) {
 
 app.get('/', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
-  var template = jade.renderFile(templatePath("CatalogTemplate.xml.js"), {
+  var template = jade.renderFile(templatePath("Index.xml.js"), {
     doctype: 'xml',
     baseUrl: baseUrl,
     things: [
