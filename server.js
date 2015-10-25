@@ -18,13 +18,17 @@ var defaultThings = function(baseUrl) {
   }
 };
 
+var noDynamicContent = function(baseUrl) {
+  return {};
+}
+
 var templateDynamicContentFor = function(path, baseUrl) {
   var templateDirectory = {
     'Index.xml.js': defaultThings,
     'CatalogTemplate.xml.js': defaultThings
   }
 
-  return templateDirectory[path].call(this, baseUrl);
+  return (templateDirectory[path] || noDynamicContent).call(this, baseUrl);
 };
 
 var templateOptionsFor = function(path, baseUrl) {
