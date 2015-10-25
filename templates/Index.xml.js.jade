@@ -41,6 +41,14 @@ document
               description.descriptionLayout
                 | A catalog template allows you to display groupings of related items, such as genres of movies or TV shows.
 
+        listItemLockup(template="#{baseUrl}/templates/CatalogTemplate.xml.js" accessibilityText="Our own dynamic Accessible catalog template")
+          title Dynamic Catalog
+          relatedContent
+            lockup
+              img(src="#{baseUrl}/resources/images/templates/catalog.jpg" width="857" height="482")
+              description.descriptionLayout
+                | Pugs and whatnot.
+
         listItemLockup(template="#{baseUrl}/templates/Compilation.xml.js" accessibilityText="Accessible compilation template")
           title Compilation
           relatedContent

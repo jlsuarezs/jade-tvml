@@ -5,6 +5,9 @@ var express = require('express'),
 var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
     templatePath        = require('./lib/template-path');
 
+var http = require('http');
+var lodash = require('lodash');
+
 var app = express();
 
 var defaultThings = function(baseUrl) {
@@ -22,12 +25,34 @@ var defaultThings = function(baseUrl) {
 
 var noDynamicContent = function(baseUrl) {
   return new Promise(function(resolve, _) { return resolve({}) });
-}
+};
+
+var shopThings = function(_) {
+  return new Promise(function(resolve, reject) {
+    var uri = 'http://erinashleyart.com/products.json'
+    http.get(uri, function(res) {
+      var body = '';
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+
+      res.on('end', function() {
+        var productData = JSON.parse(body).products;
+        var products = {
+          things: lodash.map(productData, function(product) {
+            return { 'title': product.title, 'thumbnail': product.images[0].src };
+          })
+        };
+        return resolve(products);
+      });
+    }).on('error', function(e) { return reject(e); });
+  });
+};
 
 var templateDynamicContentFor = function(path, baseUrl) {
   var templateDirectory = {
     'Index.xml.js': defaultThings,
-    'CatalogTemplate.xml.js': defaultThings
+    'CatalogTemplate.xml.js': shopThings
   }
 
   return new Promise(function(resolve, reject) {

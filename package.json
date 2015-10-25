@@ -4,11 +4,16 @@
   "description": "Jade to TVML/JS tester",
   "main": "server.js",
   "keywords": [
-    "tvOS", "express", "jade", "html", "AppleTV"
+    "tvOS",
+    "express",
+    "jade",
+    "html",
+    "AppleTV"
   ],
   "dependencies": {
     "express": "^4.13.3",
     "jade": "^1.11.0",
+    "lodash": "^3.10.1",
     "morgan": "^1.6.1"
   },
   "devDependencies": {
