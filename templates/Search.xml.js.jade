@@ -9,60 +9,26 @@ document
   searchTemplate
     searchField
     collectionList
-      list(class="suggestionListLayout")
-        section
-          header: title Suggestions
-          listItemLockup(_value="grid"): title "arc"
-          listItemLockup: title arcade
+      shelf
+        list.suggestionListLayout
+          section
+            header: title Suggestions
+            listItemLockup: title "arc"
+            listItemLockup: title arcade
 
       separator
       
       shelf
         header: title Shelf Title
         section
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_1.lcr" width="350" height="520")
-            
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_2.lcr" width="350" height="520")
-            title Title 2
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_3.lcr" width="350" height="520")
-            title Title 3
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_4.lcr" width="350" height="520")
-            title Title 4
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_5.lcr" width="350" height="520")
-            title Title 5
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_6.lcr" width="350" height="520")
-            title Title 6
-          lockup
-            img(src="#{baseUrl}/resources/images/movies/movie_7.lcr" width="350" height="520")
-            title Title 7
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/movies/movie_#{val}.lcr" width="350" height="520")
 
       grid
         header: title Grid Title
         section
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_1.lcr" width="350" height="350")
-            title Title 1
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_2.lcr" width="350" height="350")
-            title Title 2
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_3.lcr" width="350" height="350")
-            title Title 3
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_4.lcr" width="350" height="350")
-            title Title 4
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_5.lcr" width="350" height="350")
-            title Title 5
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_6.lcr" width="350" height="350")
-            title Title 6
-          lockup
-            img(src="#{baseUrl}/resources/images/music/music_7.lcr" width="350" height="350")
-            title Title 7
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="350" height="350")
+              title Title #{val}
