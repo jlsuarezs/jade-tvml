@@ -7,10 +7,8 @@ var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
 
 var app = express();
 
-var templateOptionsFor = function(path, baseUrl) {
+var defaultThings = function(baseUrl) {
   return {
-    doctype: 'xml',
-    baseUrl: baseUrl,
     things: [
       {'title': 'One Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
       {'title': 'Two Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
@@ -18,7 +16,24 @@ var templateOptionsFor = function(path, baseUrl) {
       {'title': 'Blue Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
     ]
   }
-}
+};
+
+var templateDynamicContentFor = function(path, baseUrl) {
+  var templateDirectory = {
+    'Index.xml.js': defaultThings,
+    'CatalogTemplate.xml.js': defaultThings
+  }
+
+  return templateDirectory[path].call(this, baseUrl);
+};
+
+var templateOptionsFor = function(path, baseUrl) {
+  return {
+    doctype: 'xml',
+    baseUrl: baseUrl,
+    dynamicContent: templateDynamicContentFor(path, baseUrl)
+  };
+};
 
 app.use(express.static('public'));
 app.use(logger('dev'));
