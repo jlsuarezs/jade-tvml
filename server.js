@@ -8,18 +8,20 @@ var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
 var app = express();
 
 var defaultThings = function(baseUrl) {
-  return {
-    things: [
-      {'title': 'One Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-      {'title': 'Two Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-      {'title': 'Red Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-      {'title': 'Blue Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-    ]
-  }
+  return new Promise(function(resolve, _) {
+    return resolve({
+      things: [
+        {'title': 'One Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+        {'title': 'Two Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+        {'title': 'Red Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+        {'title': 'Blue Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
+      ]
+    });
+  });
 };
 
 var noDynamicContent = function(baseUrl) {
-  return {};
+  return new Promise(function(resolve, _) { return resolve({}) });
 }
 
 var templateDynamicContentFor = function(path, baseUrl) {
@@ -28,17 +30,25 @@ var templateDynamicContentFor = function(path, baseUrl) {
     'CatalogTemplate.xml.js': defaultThings
   }
 
-  return (templateDirectory[path] || noDynamicContent).call(this, baseUrl);
+  return new Promise(function(resolve, reject) {
+    (templateDirectory[path] || noDynamicContent).call(this, baseUrl)
+    .then(function(content) {
+      return resolve(content);
+    }).catch(function(err) { return reject(err) });
+  });
 };
 
 var templateOptionsFor = function(path, baseUrl) {
   return new Promise(function(resolve, reject) {
-    return resolve({
-      doctype: 'xml',
-      baseUrl: baseUrl,
-      dynamicContent: templateDynamicContentFor(path, baseUrl)
-    });
+    templateDynamicContentFor(path, baseUrl).then(function(templateContent) {
+      return resolve({
+        doctype: 'xml',
+        baseUrl: baseUrl,
+        dynamicContent: templateContent
+      });
+    }).catch(function(err) { return reject(err) });
   });
+
 };
 
 var renderTemplate = function(path, baseUrl) {
@@ -47,7 +57,7 @@ var renderTemplate = function(path, baseUrl) {
     .then(function(templateOptions) {
       return resolve(jade.renderFile(templatePath(path), templateOptions));
     })
-    .catch(function(err) { reject(err); });
+    .catch(function(err) { return reject(err); });
   });
 };
 
