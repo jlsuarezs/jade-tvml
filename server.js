@@ -29,7 +29,7 @@ var noDynamicContent = function(baseUrl) {
 
 var shopThings = function(_) {
   return new Promise(function(resolve, reject) {
-    var uri = 'http://erinashleyart.com/products.json'
+    var uri = 'http://soulland.com/products.json'
     http.get(uri, function(res) {
       var body = '';
       res.on('data', function(chunk) {
@@ -103,7 +103,7 @@ app.get('/templates/:path', function (req, res) {
   }).catch(function(error) {
     // TODO: Figure out how to properly catch Promise rejections and send a
     // response
-    console.log("Something broke: \n" + error);
+    console.log("Err… something broke: \n" + error);
     req.status(500).send("Something broke: \n" + error);
   });
 });

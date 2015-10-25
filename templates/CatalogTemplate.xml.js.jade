@@ -3,22 +3,20 @@ document
   head
     :style
       .whiteText {
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
       }
   catalogTemplate
-    banner
-      title Store Catalog
+    banner: title Store Catalog
     list
       section
-        header
-          title Section Header
+        header: title Section Header
         listItemLockup
           title Title 1
-          decorationLabel 6
+          decorationLabel= dynamicContent.things.length
           relatedContent
             grid
               section
-                lockup
-                  each thing in dynamicContent.things
+                each thing in dynamicContent.things
+                  lockup
                     img(src="#{thing.thumbnail}" width="308" height="308")
                     title.whiteText #{thing.title}
