@@ -28,11 +28,23 @@ var templateDynamicContentFor = function(path, baseUrl) {
 };
 
 var templateOptionsFor = function(path, baseUrl) {
-  return {
-    doctype: 'xml',
-    baseUrl: baseUrl,
-    dynamicContent: templateDynamicContentFor(path, baseUrl)
-  };
+  return new Promise(function(resolve, reject) {
+    return resolve({
+      doctype: 'xml',
+      baseUrl: baseUrl,
+      dynamicContent: templateDynamicContentFor(path, baseUrl)
+    });
+  });
+};
+
+var renderTemplate = function(path, baseUrl) {
+  return new Promise(function(resolve, reject) {
+    templateOptionsFor(path, baseUrl)
+    .then(function(templateOptions) {
+      return resolve(jade.renderFile(templatePath(path), templateOptions));
+    })
+    .catch(function(err) { reject(err); });
+  });
 };
 
 app.use(express.static('public'));
@@ -45,10 +57,16 @@ jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "") 
 
 app.get('/templates/:path', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
-  var template = jade.renderFile(templatePath(req.params.path), templateOptionsFor(req.params.path, baseUrl));
 
-  res.set('Content-Type', 'application/javascript');
-  res.send(tvosTemplateWrapper(template));
+  renderTemplate(req.params.path, baseUrl).then(function(template) {
+    res.set('Content-Type', 'application/javascript');
+    res.send(tvosTemplateWrapper(template));
+  }).catch(function(error) {
+    // TODO: Figure out how to properly catch Promise rejections and send a
+    // response
+    console.log("Something broke: \n" + error);
+    req.status(500).send("Something broke: \n" + error);
+  });
 });
 
 app.get('/', function (req, res) {
