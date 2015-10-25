@@ -45,49 +45,15 @@ document
     shelf
       header: title Shelf Header
       section
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_1.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 1
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_2.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 2
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_3.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 3
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_4.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 4
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_5.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 5
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_6.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 6
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_7.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 7
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_1.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 8
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_2.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 9
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_3.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 10
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_4.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 11
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_5.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 12
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_6.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 13
-        lockup
-          img(src="#{baseUrl}/resources/images/movies/movie_7.lcr" width="150" height="226")
-          title.showTextOnHighlight Title 14
-
+        each val in [1, 2, 3, 4, 5, 6, 7]
+          lockup
+            img(src="#{baseUrl}/resources/images/movies/movie_#{val}.lcr" width="150" height="226")
+            title.showTextOnHighlight Title #{val}
+        each val in [1, 2, 3, 4, 5, 6, 7]
+          lockup
+            img(src="#{baseUrl}/resources/images/movies/movie_#{val}.lcr" width="150" height="226")
+            title.showTextOnHighlight Title #{val + 7}
+          
     shelf
       header: title Title
       section
@@ -107,9 +73,10 @@ document
     shelf.shelfLayout
       header: title Title
       section
-        monogramLockup
-          monogram(firstName="Adam" lastName="Gooseff")
-          title Adam Gooseff
+        each person in [{'firstName': 'Adam', 'lastName': 'Gooseff'}]
+          monogramLockup
+            monogram(firstName= person.firstName lastName= person.lastName)
+            title #{person.firstName} #{person.lastName}
         monogramLockup
           monogram(firstName="Ailish" lastName="Kimber")
           title Ailish Kimber
