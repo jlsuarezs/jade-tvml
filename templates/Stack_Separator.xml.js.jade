@@ -1,0 +1,64 @@
+doctype xml
+document
+  head
+    :style
+      .showTextOnHighlight {
+        tv-text-highlight-style: show-on-highlight;
+      }
+      .roundedImageCorners {
+        itml-img-treatment: corner-small;
+      }
+      .customBadgeLayout {
+        tv-tint-color: rgb(0, 0, 0);
+        margin: 0 0 5 0;
+      }
+  stackTemplate
+    collectionList
+      carousel
+        section
+          each val in [1, 2, 3]
+            lockup
+              img(src="#{baseUrl}/resources/images/carousel/carousel_#{val}.lcr" width="1740" height="500")
+        
+      separator
+        button
+          text 
+            Options
+            badge.customBadgeLayout(src="resource://button-dropdown" width="31" height="14")
+        
+      
+      shelf
+        header: title Shelf title
+        section
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
+              title.showTextOnHighlight Title #{val}
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
+              title.showTextOnHighlight Title #{val + 7}
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
+              title.showTextOnHighlight Title #{val + 14}
+          each val in [1, 2, 3, 4, 5, 6, 7]
+            lockup
+              img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
+              title.showTextOnHighlight Title #{val + 21}
+      
+      shelf
+        header: title Shelf title
+        section
+          lockup
+            each val in [1, 2, 3, 4, 5]
+              img.roundedImageCorners(src="#{baseUrl}/resources/images/italy/italy_#{val}.jpg" width="548" height="269")
+              title.showTextOnHighlight Title #{val}
+      
+      shelf
+        header: title Shelf title
+        section
+          each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            lockup
+              img(src="#{baseUrl}/resources/images/italy/italy_#{val}_poster.jpg" width="250" height="375")
+              title.showTextOnHighlight Title #{val}

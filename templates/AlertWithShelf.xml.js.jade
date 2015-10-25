@@ -1,0 +1,39 @@
+doctype xml
+document
+  head
+    :style
+      .showTextOnHighlight {
+        tv-text-highlight-style: show-on-highlight;
+      }
+      .overlayTextLayout {
+        tv-position: top;
+      }
+      .centeredText {
+        text-align: center;
+      }
+  descriptiveAlertTemplate
+    title Title
+    shelf
+      section
+        lockup
+          img(src="#{baseUrl}/resources/images/music/music_1.lcr" width="450" height="450")
+          title.showTextOnHighlight Title 1
+        lockup
+          img(src="#{baseUrl}/resources/images/music/music_2.lcr" width="450" height="450")
+          title.showTextOnHighlight Title 2
+        lockup
+          img(src="#{baseUrl}/resources/images/music/music_3.lcr" width="450" height="450")
+          title.showTextOnHighlight Title 3
+        lockup
+          img(src="#{baseUrl}/resources/images/music/music_4.lcr" width="450" height="450")
+          title.showTextOnHighlight Title 4
+        lockup
+          img(src="#{baseUrl}/resources/images/iceland/iceland_19.jpg" width="752" height="450")
+          title.showTextOnHighlight Title 5
+          overlay
+            title.overlayTextLayout Title
+            text.overlayTextLayout  Text 1
+            text.overlayTextLayout  Text 2
+            text.centeredText  Centered Text
+    button: text Button 1
+    button: text Button 2

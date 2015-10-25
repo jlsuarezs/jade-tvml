@@ -1,0 +1,26 @@
+doctype xml
+document
+  paradeTemplate
+    list
+      header
+        title Parade Preview
+      section
+        listItemLockup
+          title Title 1
+          relatedContent
+            imgDeck
+              each val in [11, 12, 13, 14, 15, 16]
+                img(src="#{baseUrl}/resources/images/italy/italy_#{val}_poster.jpg")
+        listItemLockup: title Title 2
+        listItemLockup: title Title 3
+        listItemLockup: title Title 4
+        listItemLockup: title Title 5
+        listItemLockup: title Title 6
+      relatedContent
+        imgDeck
+          img(src="#{baseUrl}/resources/images/italy/italy_5_poster.jpg")
+          img(src="#{baseUrl}/resources/images/iceland/iceland_14_poster.jpg")
+          img(src="#{baseUrl}/resources/images/italy/italy_18_poster.jpg")
+          img(src="#{baseUrl}/resources/images/iceland/iceland_11_poster.jpg")
+          img(src="#{baseUrl}/resources/images/italy/italy_20_poster.jpg")
+          img(src="#{baseUrl}/resources/images/iceland/iceland_7_poster.jpg")
