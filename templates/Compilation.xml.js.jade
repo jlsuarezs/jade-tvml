@@ -25,11 +25,12 @@ document
         row
           text Text 1
           text Text 2  
+          
       section
         header: title Title
         each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
           listItemLockup
-            ordinal.ordinalLayout(minLength="2" class="ordinalLayout")= val
+            ordinal.ordinalLayout(minLength="2")= val
             title Title #{val}
             subtitle Subtitle #{val}
             decorationLabel Right label #{val}
