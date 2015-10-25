@@ -15,9 +15,9 @@ document
         itemBanner
           heroImg(src="#{baseUrl}/resources/images/italy/italy_20_square.jpg")
           row
-            each action in ['add-alt', 'rate', 'more']
+            each action in ['button-add-alt', 'button-rate', 'button-more']
               buttonLockup
-                badge.whiteButton(src="resource://button-#{action}")
+                badge.whiteButton(src="resource://#{action}")
                 title Title 
       header
         title Title
