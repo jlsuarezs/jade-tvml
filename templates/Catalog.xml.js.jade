@@ -31,10 +31,10 @@ document
           relatedContent
             grid
               section
-                each val in [1, 2, 3, 4, 5, 6, 7]
+                each thing in dynamicContent.things
                   lockup
-                    img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
-                    title.whiteText Title #{val}
+                    img(src="#{baseUrl}/#{thing.thumbnail}" width="308" height="308")
+                    title.whiteText= thing.title
 
         listItemLockup
           title Title 3

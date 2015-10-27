@@ -1,38 +1,33 @@
 var express = require('express'),
-    logger  = require('morgan'),
-    jade    = require('jade');
+    logger = require('morgan'),
+    jade = require('jade'),
+    http = require('http'),
+    _ = require('lodash');
+
+var defaultData = require('./data/defaults');
 
 var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
-    templatePath        = require('./lib/template-path');
-
-var http = require('http');
-var lodash = require('lodash');
+    templatePath = require('./lib/template-path');
 
 var app = express();
 
-var defaultThings = function(baseUrl) {
-  return new Promise(function(resolve, _) {
+var loadDefaultData = function(baseUrl) {
+  return new Promise(function(resolve, reject) {
     return resolve({
-      things: [
-        {'title': 'One Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-        {'title': 'Two Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-        {'title': 'Red Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-        {'title': 'Blue Thing', 'thumbnail': baseUrl + '/resources/images/lolz/pug.png'},
-      ]
+      things: defaultData
     });
   });
 };
 
-var noDynamicContent = function(baseUrl) {
-  return new Promise(function(resolve, _) { return resolve({}) });
-};
-
-var shopThings = function(_) {
+var loadShopifyData = function(baseUrl) {
   return new Promise(function(resolve, reject) {
     var uri = 'http://soulland.com/products.json';
 
     http.get(uri, function(res) {
       var body = '';
+
+      console.log('Requesting data from ' + uri)
+
       res.on('data', function(chunk) {
         body += chunk;
       });
@@ -40,7 +35,7 @@ var shopThings = function(_) {
       res.on('end', function() {
         var productData = JSON.parse(body).products;
         var products = {
-          things: lodash.map(productData, function(product) {
+          things: _.map(productData, function(product) {
             return { 'title': product.title, 'thumbnail': product.images[0].src };
           })
         };
@@ -50,10 +45,15 @@ var shopThings = function(_) {
   });
 };
 
+var noDynamicContent = function(baseUrl) {
+  return new Promise(function(resolve, reject) { return resolve({}) });
+};
+
 var templateDynamicContentFor = function(path, baseUrl) {
   var templateDirectory = {
-    'Index.xml.js': defaultThings,
-    'CatalogTemplate.xml.js': shopThings
+    'Index.xml.js': loadDefaultData,
+    'Catalog.xml.js': loadDefaultData,
+    'CatalogTemplate.xml.js': loadShopifyData
   };
 
   return new Promise(function(resolve, reject) {
@@ -111,19 +111,16 @@ app.get('/templates/:path', function (req, res) {
 
 app.get('/', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
-  var template = jade.renderFile(templatePath("Index.xml.js"), {
-    doctype: 'xml',
-    baseUrl: baseUrl,
-    things: [
-      'One Thing',
-      'Two Thing',
-      'Red Thing',
-      'Blue Thing'
-    ]
-  });
 
-  res.set('Content-Type', 'application/javascript');
-  res.send(tvosTemplateWrapper(template));
+  renderTemplate('Index.xml.js', baseUrl).then(function(template) {
+    res.set('Content-Type', 'application/javascript');
+    res.send(tvosTemplateWrapper(template));
+  }).catch(function(error) {
+    // TODO: Figure out how to properly catch Promise rejections and send a
+    // response
+    console.log("Err… something broke: \n" + error);
+    req.status(500).send("Something broke: \n" + error);
+  });
 });
 
 
