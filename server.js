@@ -26,7 +26,7 @@ var loadShopifyData = function(baseUrl) {
     http.get(uri, function(res) {
       var body = '';
 
-      console.log('Requesting data from ' + uri)
+      console.log('Requesting data from ' + uri);
 
       res.on('data', function(chunk) {
         body += chunk;
@@ -46,7 +46,9 @@ var loadShopifyData = function(baseUrl) {
 };
 
 var noDynamicContent = function(baseUrl) {
-  return new Promise(function(resolve, reject) { return resolve({}) });
+  return new Promise(function(resolve, reject) {
+    return resolve({});
+  });
 };
 
 var templateDynamicContentFor = function(path, baseUrl) {
@@ -58,21 +60,28 @@ var templateDynamicContentFor = function(path, baseUrl) {
 
   return new Promise(function(resolve, reject) {
     (templateDirectory[path] || noDynamicContent).call(this, baseUrl)
-    .then(function(content) {
-      return resolve(content);
-    }).catch(function(err) { return reject(err) });
+      .then(function(content) {
+        return resolve(content);
+      })
+      .catch(function(err) {
+        return reject(err);
+      });
   });
 };
 
 var templateOptionsFor = function(path, baseUrl) {
   return new Promise(function(resolve, reject) {
-    templateDynamicContentFor(path, baseUrl).then(function(templateContent) {
-      return resolve({
-        doctype: 'xml',
-        baseUrl: baseUrl,
-        dynamicContent: templateContent
+    templateDynamicContentFor(path, baseUrl)
+      .then(function(templateContent) {
+        return resolve({
+          doctype: 'xml',
+          baseUrl: baseUrl,
+          dynamicContent: templateContent
+        });
+      })
+      .catch(function(err) {
+        return reject(err);
       });
-    }).catch(function(err) { return reject(err) });
   });
 
 };
@@ -80,10 +89,10 @@ var templateOptionsFor = function(path, baseUrl) {
 var renderTemplate = function(path, baseUrl) {
   return new Promise(function(resolve, reject) {
     templateOptionsFor(path, baseUrl)
-    .then(function(templateOptions) {
-      return resolve(jade.renderFile(templatePath(path), templateOptions));
-    })
-    .catch(function(err) { return reject(err); });
+      .then(function(templateOptions) {
+        return resolve(jade.renderFile(templatePath(path), templateOptions));
+      })
+      .catch(function(err) { return reject(err); });
   });
 };
 
@@ -101,7 +110,8 @@ app.get('/templates/:path', function (req, res) {
   renderTemplate(req.params.path, baseUrl).then(function(template) {
     res.set('Content-Type', 'application/javascript');
     res.send(tvosTemplateWrapper(template));
-  }).catch(function(error) {
+  })
+  .catch(function(error) {
     // TODO: Figure out how to properly catch Promise rejections and send a
     // response
     console.log("Err… something broke: \n" + error);
@@ -115,7 +125,8 @@ app.get('/', function (req, res) {
   renderTemplate('Index.xml.js', baseUrl).then(function(template) {
     res.set('Content-Type', 'application/javascript');
     res.send(tvosTemplateWrapper(template));
-  }).catch(function(error) {
+  })
+  .catch(function(error) {
     // TODO: Figure out how to properly catch Promise rejections and send a
     // response
     console.log("Err… something broke: \n" + error);
