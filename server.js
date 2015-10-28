@@ -138,7 +138,9 @@ var renderTemplate = function(path, baseUrl, query) {
       .then(function(templateOptions) {
         return resolve(jade.renderFile(templatePath(path), templateOptions));
       })
-      .catch(function(err) { return reject(err); });
+      .catch(function(err) {
+        return reject(err);
+      });
   });
 };
 
@@ -179,6 +181,5 @@ app.get('/', function (req, res) {
     req.status(500).send("Something broke: \n" + error);
   });
 });
-
 
 var server = app.listen(5000);

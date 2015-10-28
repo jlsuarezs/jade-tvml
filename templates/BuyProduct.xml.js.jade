@@ -2,7 +2,7 @@ doctype xml
 document
   formTemplate
     banner
-      title=dynamicContent.product.title
+      title= dynamicContent.product.title
       img(src= dynamicContent.product.heroImg)
       description
         | Please enter your credit card details and this product will be shipped to your door.
@@ -11,6 +11,4 @@ document
     textField CVV
     textField Expiry Date
     footer
-      button
-        | Buy for #{dynamicContent.product.price}
-
+      button: text Buy for #{dynamicContent.product.price}
