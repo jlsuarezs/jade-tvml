@@ -11,6 +11,10 @@ var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
 
 var app = express();
 
+var stripHtml = function(containsHtml) {
+  return containsHtml.replace(/<[^>]+>/ig, "")
+}
+
 var loadDefaultData = function(baseUrl) {
   return new Promise(function(resolve, reject) {
     return resolve({
@@ -19,7 +23,44 @@ var loadDefaultData = function(baseUrl) {
   });
 };
 
-var loadShopifyData = function(baseUrl) {
+var loadShopifyProduct = function(baseUrl, query) {
+  return new Promise(function(resolve, reject) {
+    if(query.handle == undefined) {
+      return reject('No product ID (handle)');
+    }
+
+    var uri = 'http://soulland.com/products/' + query.handle + '.json';
+
+    http.get(uri, function(res) {
+      var body = '';
+
+      console.log('Requesting data from ' + uri);
+
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+
+      res.on('end', function() {
+        var productData = JSON.parse(body).product;
+        var product = {
+          product: {
+            'handle': productData.handle,
+            'title': productData.title,
+            'heroImg': productData.images[0].src,
+            'description': stripHtml(productData.body_html),
+            'vendor': productData.vendor,
+            'type': productData.product_type,
+            'price': "$" + productData.variants[0].price,
+            'images': _.map(productData.images, function(image) {return image.src})
+          }
+        };
+        return resolve(product);
+      });
+    }).on('error', function(e) { return reject(e); });
+  });
+}
+
+var loadShopifyProducts = function(baseUrl) {
   return new Promise(function(resolve, reject) {
     var uri = 'http://soulland.com/products.json';
 
@@ -36,7 +77,7 @@ var loadShopifyData = function(baseUrl) {
         var productData = JSON.parse(body).products;
         var products = {
           things: _.map(productData, function(product) {
-            return { 'title': product.title, 'thumbnail': product.images[0].src };
+            return { 'handle': product.handle, 'title': product.title, 'thumbnail': product.images[0].src };
           })
         };
         return resolve(products);
@@ -51,15 +92,16 @@ var noDynamicContent = function(baseUrl) {
   });
 };
 
-var templateDynamicContentFor = function(path, baseUrl) {
+var templateDynamicContentFor = function(path, baseUrl, query) {
   var templateDirectory = {
     'Index.xml.js': loadDefaultData,
     'Catalog.xml.js': loadDefaultData,
-    'CatalogTemplate.xml.js': loadShopifyData
+    'CatalogTemplate.xml.js': loadShopifyProducts,
+    'ShowProduct.xml.js': loadShopifyProduct
   };
 
   return new Promise(function(resolve, reject) {
-    (templateDirectory[path] || noDynamicContent).call(this, baseUrl)
+    (templateDirectory[path] || noDynamicContent).call(this, baseUrl, query)
       .then(function(content) {
         return resolve(content);
       })
@@ -69,9 +111,9 @@ var templateDynamicContentFor = function(path, baseUrl) {
   });
 };
 
-var templateOptionsFor = function(path, baseUrl) {
+var templateOptionsFor = function(path, baseUrl, query) {
   return new Promise(function(resolve, reject) {
-    templateDynamicContentFor(path, baseUrl)
+    templateDynamicContentFor(path, baseUrl, query)
       .then(function(templateContent) {
         return resolve({
           doctype: 'xml',
@@ -86,9 +128,9 @@ var templateOptionsFor = function(path, baseUrl) {
 
 };
 
-var renderTemplate = function(path, baseUrl) {
+var renderTemplate = function(path, baseUrl, query) {
   return new Promise(function(resolve, reject) {
-    templateOptionsFor(path, baseUrl)
+    templateOptionsFor(path, baseUrl, query)
       .then(function(templateOptions) {
         return resolve(jade.renderFile(templatePath(path), templateOptions));
       })
@@ -107,7 +149,7 @@ jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "") 
 app.get('/templates/:path', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
 
-  renderTemplate(req.params.path, baseUrl).then(function(template) {
+  renderTemplate(req.params.path, baseUrl, req.query).then(function(template) {
     res.set('Content-Type', 'application/javascript');
     res.send(tvosTemplateWrapper(template));
   })

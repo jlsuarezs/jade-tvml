@@ -1,0 +1,22 @@
+doctype xml
+document
+  productTemplate
+    banner
+      heroImg(src= dynamicContent.product.heroImg)
+      infoList
+        info
+          header
+            title=dynamicContent.product.price
+      stack
+        title= dynamicContent.product.title 
+        row
+          text= dynamicContent.product.vendor
+        row
+          text= dynamicContent.product.type
+        description(allowsZooming="true" moreLable="more")= dynamicContent.product.description
+      shelf
+        header: More images 
+        section
+          each image in dynamicContent.product.images
+            lockup
+              img(src=image)

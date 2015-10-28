@@ -117,8 +117,9 @@ var Presenter = {
         /*
         Check if the selected element has a 'template' attribute. If it does then we begin
         the process to present the template to the user.
+        We only load templates on the 'select' event type, otherwise 'highlight' gets a bit aggressive.
         */
-        if (templateURL) {
+        if (templateURL && event.type == 'select') {
             /*
             Whenever a user action is taken you need to visually indicate to the user that
             you are processing their action. When a users action indicates that a new document

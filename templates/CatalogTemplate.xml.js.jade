@@ -17,6 +17,6 @@ document
             grid
               section
                 each thing in dynamicContent.things
-                  lockup
+                  lockup(template="#{baseUrl}/templates/ShowProduct.xml.js?handle=#{thing.handle}")
                     img(src= thing.thumbnail width="308" height="308")
                     title.whiteText= thing.title
