@@ -15,6 +15,29 @@ var stripHtml = function(containsHtml) {
   return containsHtml.replace(/<[^>]+>/ig, "")
 }
 
+var loadJsonData = function(uri) {
+  return new Promise(function(resolve, reject) {
+    if(uri == undefined) {
+      return reject('No URI specified to load');
+    }
+
+    http.get(uri, function(res) {
+      var body = '';
+
+      console.log('Requesting data from ' + uri);
+
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+
+      res.on('end', function() {
+        return resolve(JSON.parse(body));
+      });
+    }).on('error', function(e) { return reject(e); });
+
+  });
+}
+
 var loadDefaultData = function(baseUrl) {
   return new Promise(function(resolve, reject) {
     return resolve({
@@ -31,32 +54,22 @@ var loadShopifyProduct = function(baseUrl, query) {
 
     var uri = 'http://soulland.com/products/' + query.handle + '.json';
 
-    http.get(uri, function(res) {
-      var body = '';
-
-      console.log('Requesting data from ' + uri);
-
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-
-      res.on('end', function() {
-        var productData = JSON.parse(body).product;
-        var product = {
-          product: {
-            'handle': productData.handle,
-            'title': productData.title,
-            'heroImg': productData.images[0].src,
-            'description': stripHtml(productData.body_html),
-            'vendor': productData.vendor,
-            'type': productData.product_type,
-            'price': "$" + productData.variants[0].price,
-            'images': _.map(productData.images, function(image) {return image.src})
-          }
-        };
-        return resolve(product);
-      });
-    }).on('error', function(e) { return reject(e); });
+    loadJsonData(uri).then(function(data) {
+      var productData = data.product;
+      var product = {
+        product: {
+          'handle': productData.handle,
+          'title': productData.title,
+          'heroImg': productData.images[0].src,
+          'description': stripHtml(productData.body_html),
+          'vendor': productData.vendor,
+          'type': productData.product_type,
+          'price': "$" + productData.variants[0].price,
+          'images': _.map(productData.images, function(image) {return image.src})
+        }
+      };
+      return resolve(product);
+    }).catch(function(err) { return reject(err)});
   });
 }
 
@@ -64,25 +77,15 @@ var loadShopifyProducts = function(baseUrl) {
   return new Promise(function(resolve, reject) {
     var uri = 'http://soulland.com/products.json';
 
-    http.get(uri, function(res) {
-      var body = '';
-
-      console.log('Requesting data from ' + uri);
-
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-
-      res.on('end', function() {
-        var productData = JSON.parse(body).products;
-        var products = {
-          things: _.map(productData, function(product) {
-            return { 'handle': product.handle, 'title': product.title, 'thumbnail': product.images[0].src };
-          })
-        };
-        return resolve(products);
-      });
-    }).on('error', function(e) { return reject(e); });
+    loadJsonData(uri).then(function(data) {
+      var productData = data.products;
+      var products = {
+        things: _.map(productData, function(product) {
+          return { 'handle': product.handle, 'title': product.title, 'thumbnail': product.images[0].src };
+        })
+      };
+      return resolve(products);
+    }).catch(function(err) { return reject(err); });
   });
 };
 
