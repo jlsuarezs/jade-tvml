@@ -100,7 +100,8 @@ var templateDynamicContentFor = function(path, baseUrl, query) {
     'Index.xml.js': loadDefaultData,
     'Catalog.xml.js': loadDefaultData,
     'CatalogTemplate.xml.js': loadShopifyProducts,
-    'ShowProduct.xml.js': loadShopifyProduct
+    'ShowProduct.xml.js': loadShopifyProduct,
+    'BuyProduct.xml.js': loadShopifyProduct
   };
 
   return new Promise(function(resolve, reject) {

@@ -6,14 +6,16 @@ document
       infoList
         info
           header
-            title=dynamicContent.product.price
+            title=dynamicContent.product.type
       stack
         title= dynamicContent.product.title 
         row
           text= dynamicContent.product.vendor
-        row
-          text= dynamicContent.product.type
         description(allowsZooming="true" moreLable="more")= dynamicContent.product.description
+        row
+          buttonLockup(type="buy" template="#{baseUrl}/templates/BuyProduct.xml.js?handle=#{dynamicContent.product.handle}")
+            text=dynamicContent.product.price
+            title Buy
       shelf
         header: More images 
         section

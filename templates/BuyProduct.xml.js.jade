@@ -1,0 +1,16 @@
+doctype xml
+document
+  formTemplate
+    banner
+      title=dynamicContent.product.title
+      img(src= dynamicContent.product.heroImg)
+      description
+        | Please enter your credit card details and this product will be shipped to your door.
+    textField Name
+    textField Credit Card Number
+    textField CVV
+    textField Expiry Date
+    footer
+      button
+        | Buy for #{dynamicContent.product.price}
+
