@@ -6,43 +6,17 @@ document
         color: rgb(255, 255, 255);
       }
   catalogTemplate
-    banner: title Title
+    banner: title Store Catalog
     list
       section
         header: title Section Header
         listItemLockup
           title Title 1
-          decorationLabel 6
-          relatedContent
-            grid
-              section
-                lockup
-                  img(src="#{baseUrl}/resources/images/lolz/pug.png" width="308" height="308")
-                  title.whiteText FUCK YEAH PUG
-
-                each val in [2, 3, 4, 5, 6]
-                  lockup
-                    img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
-                    title.whiteText Title #{val}
-
-        listItemLockup
-          title Title 2
-          decorationLabel 7
+          decorationLabel= dynamicContent.things.length
           relatedContent
             grid
               section
                 each thing in dynamicContent.things
-                  lockup
-                    img(src="#{baseUrl}/#{thing.thumbnail}" width="308" height="308")
+                  lockup(template="#{baseUrl}/templates/ShowProduct.xml.js?handle=#{thing.handle}")
+                    img(src= thing.thumbnail width="308" height="308")
                     title.whiteText= thing.title
-
-        listItemLockup
-          title Title 3
-          decorationLabel 12
-          relatedContent
-            grid
-              section
-                each val in [1, 2, 3, 4, 5, 6, 7]
-                  lockup
-                    img(src="#{baseUrl}/resources/images/music/music_#{val}.lcr" width="308" height="308")
-                    title.whiteText Title #{val}
