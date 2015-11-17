@@ -1,13 +1,10 @@
 var express = require('express'),
+    tvOsJade = require('tvos-jade'),
     logger = require('morgan'),
-    jade = require('jade'),
     http = require('http'),
     _ = require('lodash');
 
 var defaultData = require('./data/defaults');
-
-var tvosTemplateWrapper = require('./lib/tvos-template-wrapper'),
-    templatePath = require('./lib/template-path');
 
 var app = express();
 
@@ -132,36 +129,19 @@ var templateOptionsFor = function(path, baseUrl, query) {
 
 };
 
-var renderTemplate = function(path, baseUrl, query) {
-  return new Promise(function(resolve, reject) {
-    templateOptionsFor(path, baseUrl, query)
-      .then(function(templateOptions) {
-        return resolve(jade.renderFile(templatePath(path), templateOptions));
-      })
-      .catch(function(err) {
-        return reject(err);
-      });
-  });
-};
-
 app.use(express.static('public'));
 app.use(logger('dev'));
-
-app.set('view engine', 'jade');
-app.set('views', __dirname + "/templates");
-
-jade.filters.style = function (str) { return '<style>' + str.replace(/\s/g, "")  + '</style>'; };
 
 app.get('/templates/:path', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
 
-  renderTemplate(req.params.path, baseUrl, req.query).then(function(template) {
+  templateOptionsFor(req.params.path, baseUrl, req.query)
+  .then(function(templateOptions) {
+    var template = tvOsJade.renderTemplate(req.params.path, templateOptions);
     res.set('Content-Type', 'application/javascript');
-    res.send(tvosTemplateWrapper(template));
+    res.send(template);
   })
   .catch(function(error) {
-    // TODO: Figure out how to properly catch Promise rejections and send a
-    // response
     console.log("Err… something broke: \n" + error);
     req.status(500).send("Something broke: \n" + error);
   });
@@ -170,16 +150,10 @@ app.get('/templates/:path', function (req, res) {
 app.get('/', function (req, res) {
   var baseUrl = req.protocol + '://' + req.get('host');
 
-  renderTemplate('Index.xml.js', baseUrl).then(function(template) {
-    res.set('Content-Type', 'application/javascript');
-    res.send(tvosTemplateWrapper(template));
-  })
-  .catch(function(error) {
-    // TODO: Figure out how to properly catch Promise rejections and send a
-    // response
-    console.log("Err… something broke: \n" + error);
-    req.status(500).send("Something broke: \n" + error);
-  });
+  var template = tvOsJade.renderTemplate('Index.xml.js', {});
+
+  res.set('Content-Type', 'application/javascript');
+  res.send(template);
 });
 
 var server = app.listen(5000);
